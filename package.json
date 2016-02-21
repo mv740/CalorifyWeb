@@ -1,8 +1,8 @@
 {
   "name": "calorifyWeb",
   "version": "0.0.1",
-
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "tedious": "^1.13.2"
   }
 }

@@ -10,16 +10,36 @@ var path = require("path");
 
 var rootDirectoryPath = {root: __dirname + '/../../'};
 
+//var Connection = require('tedious').Connection;
+//var config = {
+//    userName: 'calorifyAdmin',
+//    password: ':Zaq1xsw2cde3',
+//    server: 'calorify.database.windows.net',
+//    // If you are on Microsoft Azure, you need this:
+//    options: {encrypt: true, database: 'AdventureWorks'}
+//};
+//var connection = new Connection(config);
+//connection.on('connect', function(err) {
+//// If no error, then good to proceed.
+//    console.log("Connected");
+//});
+
 
 /* GET home page. */
 app.get('/', function (req, res) {
-    res.sendFile('index.html', { root: path.join(__dirname, '/public') });
+    res.sendFile('index.html', {root: path.join(__dirname, '/public')});
 
 });
 
 
-app.get('/hello', function (req, res) {
-    res.send({"hello":"world"})
+app.post('/persistFood', function (req, res) {
+    var foodName = req.param("foodName");
+    var cals = req.param("cals");
+    res.send(
+        {
+            "data1": foodName,
+            "data2": cals
+        })
 });
 
 http.createServer(app).listen(port, function () {
