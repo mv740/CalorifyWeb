@@ -35,11 +35,12 @@ app.get('/', function (req, res) {
 app.post('/persistFood', function (req, res) {
     var foodName = req.param("foodName");
     var cals = req.param("cals");
-    res.send(
+    console.log(
         {
             "data1": foodName,
             "data2": cals
-        })
+        });
+    res.end();
 });
 
 http.createServer(app).listen(port, function () {
