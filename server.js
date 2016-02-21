@@ -31,6 +31,15 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/test', function (req, res) {
+    var Request = require("tedious").Request,
+        request = new Request(
+            "CREATE TABLE foods (foodName VARCHAR(MAX),cals INT)", cbQuery);
+    connection.execSql(request);
+    
+    res.end();
+});
+
 
 app.post('/persistFood', function (req, res) {
     var foodName = req.param("foodName");
