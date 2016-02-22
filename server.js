@@ -13,7 +13,7 @@ var rootDirectoryPath = {root: __dirname + '/../../'};
 var Connection = require('tedious').Connection;
 var config = {
     userName: 'calorifyAdmin',
-    password: ':Zaq1xsw2cde3',
+    password: 'Zaq1xsw2cde3',
     server: 'calorifyserver.database.windows.net',
     // If you are on Microsoft Azure, you need this:
     options: {encrypt: true, database: 'calorifysql'}
@@ -32,13 +32,17 @@ app.get('/', function (req, res) {
 });
 
 app.get('/test', function (req, res) {
+
+    var name = "hello world";
+    var calories = 10;
+
     var Request = require("tedious").Request,
-        request = new Request(
-            "CREATE TABLE foods (foodName VARCHAR(MAX),cals INT)", cbQuery);
+        request = new Request("INSERT INTO foods (name,calorie) VALUES("+name+","+calories+")", cbQuery);
     connection.execSql(request);
     
     res.end();
 });
+
 
 
 app.post('/persistFood', function (req, res) {
